@@ -1,10 +1,14 @@
 
 class Newsapi{
+
+    myDate = new Date()
+    currentDate = this.myDate.getFullYear() + '-' + 
+    (this.myDate.getMonth() + 1) + '-' + this.myDate.getDate()
     apiKey = "5276d87af504489e9339985ab691991a"
     urlTemplate = "http://newsapi.org/v2/everything?"
     attributes = {
         q:'tesla',
-        from:'2021-02-10',
+        from:this.currentDate,
         sortBy:'publishedAt',
         apiKey:this.apiKey
     }
@@ -84,7 +88,7 @@ class Newsapi{
             console.log(element)
             attributes += element[0] + '=' + element[1] + '&'
         })
-        this.url = this.urlTemplate + attributes.substr(0, this.attributes.length - 1)
+        this.url = this.urlTemplate + attributes.substr(0, attributes.length - 1)
         //v1
         //v2
         //Object.entries(this.attributes).join('&)
