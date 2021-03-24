@@ -1,0 +1,42 @@
+<h3>Hello {{ firstname }}!</h3>
+
+result: {{ 3+3 }}
+<ul>
+  <li *ngFor="let car of cars; index as i;">{{ car }} - {{ i }}</li>
+</ul>
+
+<input type="text" [(ngModel)]="newCarName">
+<button (click)="fnAddNewItem(155)">Add new item</button>
+<br>
+<input type="text" [value]="firstname">
+
+
+<div *ngIf="show == true"> sample text </div>
+<br>
+<div *ngIf="show == true; then thenNewTemplate else elseNewTemplate"> sample text </div>
+<ng-template #elseNewTemplate>this is else at work</ng-template>
+<ng-template #thenNewTemplate>this is <span class="red">then</span> at work</ng-template>
+<br>
+
+<button (click)="fnToggle()">Switch</button>
+
+<div [ngSwitch]="count">
+  <div *ngSwitchCase="1">{{ cars[1] }} output: {{ count }}</div>
+  <div *ngSwitchCase="2">{{ cars[2] }} output: {{ count }}</div>
+  <div *ngSwitchCase="0">{{ cars[0] }} output: {{ count }}</div>
+  <div *ngSwitchDefault>output: {{ count }}</div>
+</div>
+
+<button (click)="fnIncrement()">+</button>
+<button (click)="fnDecrement()">-</button>
+
+<hr>
+<div [ngClass]="fnSetStyles()"></div>
+<input type="checkbox" (change) = "setSquareRed()" [checked]="isRedSquare">Red Square
+<input type="checkbox" (change) = "setSquareGreen()" [checked]="isGreenSquare">Green Square
+
+<div [ngStyle]="{'font-size': '24px', 'color': 'blue'}">Text</div>
+<div [style.fontSize]="isRedSquare == true ? '50px': '100px'">Text 2</div>
+
+<!--Передача переменной в другой компонент-->
+From child component: {{ thisChildVariable }}
