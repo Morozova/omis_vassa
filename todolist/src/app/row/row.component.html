@@ -1,5 +1,6 @@
 <div>
-    <input type="checkbox" name="completed">
-    <span>{{ todo.title }}</span>
-    <button type="button" class="btn btn-danger">delete</button>
+    <input type="checkbox" name="completed" (change)="setIsCompleted()" [checked]="todo.completed" class="m-1">
+    <span [ngClass]="generateClasses()">{{ todo.title }}</span>
+    <button type="button" class="btn btn-danger m-1" (click)="onDeleteItem(todo.id)">delete</button>
+    <a href="details/{{ todo.id }}" class="btn btn-info m-1">Details</a>
 </div>

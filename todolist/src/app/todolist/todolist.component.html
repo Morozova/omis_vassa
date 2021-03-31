@@ -1,4 +1,5 @@
 <h3>My ToDo!</h3>
-<app-row *ngFor="let todo of todos" [todoTitle]="todo.title" [todo]="todo"></app-row>
+<app-row *ngFor="let todo of todos" [todoTitle]="todo.title" [todo]="todo" (onDeleteTodoItem)="deleteTodo($event)">
+</app-row>
 <hr>
-<app-form (onInsertTodoItem) = "insertTodo($event)"></app-form>
+<app-form (onInsertTodoItem)="insertTodo($event)"></app-form>

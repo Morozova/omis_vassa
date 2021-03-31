@@ -8,21 +8,25 @@ import { FormComponent } from './form/form.component';
 import { RowComponent } from './row/row.component';
 import { TododetailComponent } from './tododetail/tododetail.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms'
-
+import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component'
+import { HttpClientModule } from '@angular/common/http'
+ 
 @NgModule({
   declarations: [
     AppComponent,
     TodolistComponent,
     FormComponent,
     RowComponent,
-    TododetailComponent
+    TododetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

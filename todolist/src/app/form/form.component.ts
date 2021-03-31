@@ -3,22 +3,19 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.sass']
+  styleUrls: ['./form.component.sass'],
 })
 export class FormComponent implements OnInit {
+  inputTodoTitle: string = '';
+  inputTodoIsCompleted: boolean = false;
 
-  inputTodoTitle:string = ''
-  inputTodoIsCompleted:boolean = false
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  @Output() onInsertTodoItem: EventEmitter<any> = new EventEmitter();
+
+  frmInsertTodoItem() {
+    this.onInsertTodoItem.emit(this.inputTodoTitle);
   }
-
-  @Output() onInsertTodoItem:EventEmitter<any> = new EventEmitter()
-
-  frmInsertTodoItem(){
-    this.onInsertTodoItem.emit(this.inputTodoTitle)
-  }
-
 }

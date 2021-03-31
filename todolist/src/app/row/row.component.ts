@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ITodos } from '../ITodos';
 
 @Component({
@@ -8,12 +8,26 @@ import { ITodos } from '../ITodos';
 })
 export class RowComponent implements OnInit {
 
-  @Input() todoTitle:string = ''
-  @Input() todo:ITodos = { id:0, title: '', isCompleted:true, publish_date: '' }
+  @Input() todoTitle: string = ''
+  @Input() todo: ITodos = { id: 0, title: '', completed: true, publish_date: '' }
+  @Output() onDeleteTodoItem: EventEmitter<number> = new EventEmitter()
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  setIsCompleted(): any {
+    this.todo.completed = !this.todo.completed
+  }
+
+  generateClasses(): any {
+    return {
+      completed: this.todo.completed
+    }
+  }
+
+  onDeleteItem(id: number): void {
+    this.onDeleteTodoItem.emit(id)
+  }
 }

@@ -1,13 +1,18 @@
 <h3>Add new Todo!</h3>
 
-<form (ngSubmit) = "frmInsertTodoItem()">
-    <div class="form-group">
-      <label for="todoTitle">ToDo title</label>
-      <input type="text" class="form-control" id="todoTitle" [(ngModel)] = "inputTodoTitle" name="todoTitle">
-    </div>
-    <div class="form-group form-check">
-      <input type="checkbox" class="form-check-input" id="todoIsCompleted" name = "todoCompleted">
-      <label class="form-check-label" for="exampleCheck1">ToDo Is Completed</label>
-    </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-  </form>
+<form (ngSubmit)="frmInsertTodoItem()">
+  <div class="form-group">
+    <label for="todoTitle">ToDo title</label>
+    <input type="text" class="form-control" id="todoTitle" [(ngModel)]="inputTodoTitle" name="todoTitle" required
+      minlength="4" #todoTitle="ngModel" />
+  </div>
+  <div *ngIf="todoTitle.invalid && (todoTitle.dirty || todoTitle.touched)" class="alert alert-danger">
+    Insert todo title
+  </div>
+
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="todoIsCompleted" name="todoCompleted" />
+    <label class="form-check-label" for="exampleCheck1">ToDo Is Completed</label>
+  </div>
+  <button [disabled]="todoTitle.invalid" type="submit" class="btn btn-primary">Save</button>
+</form>
